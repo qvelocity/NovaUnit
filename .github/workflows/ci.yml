@@ -2,13 +2,11 @@ name: Linting and Tests
 
 on:
     pull_request:
-        branches: [main, release/*]
         paths-ignore:
             - "**/*.md"
             - "*.md"
             - "**/*.json"
-    push:
-        branches: [main]
+
 
 jobs:
     laravel-tests:
