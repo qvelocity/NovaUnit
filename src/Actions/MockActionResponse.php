@@ -98,12 +98,17 @@ class MockActionResponse
     /**
      * Asserts the handle response is of type "visit".
      *
-     * @param  string  $message
+     * @param string|null $path
+     * @param array $options
      * @return $this
      */
-    public function assertVisit(string $message = ''): self
+    public function assertVisit(string $path = '', array $options = []): self
     {
-        return $this->assertResponseType('visit', $message);
+        if (blank($path)) {
+            return $this->assertResponseType('visit');
+        }
+
+        return $this->assertResponseContainsArray(['path' => $path, 'options' => array_values($options)], 'visit');
     }
 
     /**
@@ -135,6 +140,20 @@ class MockActionResponse
             PHPUnit::logicalAnd(
                 PHPUnit::logicalNot(PHPUnit::isEmpty()),
                 PHPUnit::stringContains($contents, true)
+            ),
+            $message
+        );
+
+        return $this;
+    }
+
+    private function assertResponseContainsArray(array $contents, string $type, string $message = ''): self
+    {
+        PHPUnit::assertThat(
+            $this->response[$type] ?? '',
+            PHPUnit::logicalAnd(
+                PHPUnit::logicalNot(PHPUnit::isEmpty()),
+                PHPUnit::equalTo($contents)
             ),
             $message
         );
