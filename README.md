@@ -1,9 +1,9 @@
 # NovaUnit
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/joshgaber/novaunit.svg?style=flat-square)](https://packagist.org/packages/joshgaber/novaunit)
-[![Code Coverage](https://scrutinizer-ci.com/g/joshgaber/novaunit/badges/coverage.png)](https://scrutinizer-ci.com/g/joshgaber/novaunit/)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/joshgaber/novaunit/badges/quality-score.png)](https://scrutinizer-ci.com/g/joshgaber/novaunit/)
-[![Total Downloads](https://img.shields.io/packagist/dt/joshgaber/novaunit.svg?style=flat-square)](https://packagist.org/packages/joshgaber/novaunit)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/quotevelocity/novaunit.svg?style=flat-square)](https://packagist.org/packages/quotevelocity/novaunit)
+<!-- [![Code Coverage](https://scrutinizer-ci.com/g/quotevelocity/novaunit/badges/coverage.png)](https://scrutinizer-ci.com/g/joshgaber/novaunit/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/quotevelocity/novaunit/badges/quality-score.png)](https://scrutinizer-ci.com/g/joshgaber/novaunit/) -->
+[![Total Downloads](https://img.shields.io/packagist/dt/quotevelocity/novaunit.svg?style=flat-square)](https://packagist.org/packages/joshgaber/novaunit)
 
 [NovaUnit](https://joshgaber.github.io/NovaUnit) is a unit-testing package for Laravel Nova, built using PHPUnit. NovaUnit provides you with assertions for Nova Actions, Lenses and Resources, so you can create great administration panels with confidence.
 
