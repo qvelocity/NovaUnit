@@ -74,11 +74,24 @@ class MockActionResponseTest extends TestCase
         $mockActionResponse->assertVisit();
     }
 
+    public function testItSucceedsOnVisitResponseWithPath()
+    {
+        $mockActionResponse = new MockActionResponse(Action::visit('/test/path'));
+        $mockActionResponse->assertVisit('/test/path');
+    }
+
     public function testItFailsOnResponseOtherThanVisit()
     {
         $this->shouldFail();
         $mockActionResponse = new MockActionResponse(Action::message('test'));
         $mockActionResponse->assertVisit();
+    }
+
+    public function testItFailsOnVisitResponseWithPathIncorrect()
+    {
+        $this->shouldFail();
+        $mockActionResponse = new MockActionResponse(Action::visit('/test/path'));
+        $mockActionResponse->assertVisit('/test/wrongpath');
     }
 
     public function testItSucceedsOnDownloadResponse()
