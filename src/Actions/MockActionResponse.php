@@ -108,7 +108,7 @@ class MockActionResponse
             return $this->assertResponseType('visit');
         }
 
-        return $this->assertResponseContainsArray([ 'path' => $path, 'options' => $options ], 'visit');
+        return $this->assertResponseContainsArray([ 'path' => $path, 'options' => array_values($options) ], 'visit');
     }
 
     /**
