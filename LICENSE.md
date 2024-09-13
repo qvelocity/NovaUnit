@@ -1,6 +1,8 @@
 MIT License
 
-Copyright (c) Josh Gaber
+Copyright (c) (2018-2023) Josh Gaber
+Copyright (c) (2024) QuoteVelocity LLC.
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
