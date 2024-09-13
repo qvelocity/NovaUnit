@@ -20,7 +20,8 @@
         },
         {
             "name": "Robert Marney",
-            "role": "Developer"
+            "role": "Developer",
+            "homepage": "https://github.com/robertmarney"
         }
     ],
     "require": {
