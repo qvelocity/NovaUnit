@@ -108,7 +108,7 @@ class MockActionResponse
             return $this->assertResponseType('visit');
         }
 
-        return $this->assertResponseContainsArray([ 'path' => $path, 'options' => array_values($options) ], 'visit');
+        return $this->assertResponseContainsArray(['path' => $path, 'options' => array_values($options)], 'visit');
     }
 
     /**
@@ -150,7 +150,7 @@ class MockActionResponse
     private function assertResponseContainsArray(array $contents, string $type, string $message = ''): self
     {
         PHPUnit::assertThat(
-            $this->response[ $type ] ?? '',
+            $this->response[$type] ?? '',
             PHPUnit::logicalAnd(
                 PHPUnit::logicalNot(PHPUnit::isEmpty()),
                 PHPUnit::equalTo($contents)
