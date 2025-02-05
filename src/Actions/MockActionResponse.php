@@ -11,7 +11,6 @@ use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
 use PHPUnit\Framework\Constraint\IsType;
 
-
 class MockActionResponse
 {
     private $response;
@@ -135,11 +134,11 @@ class MockActionResponse
      */
     public function assertOpenInNewTab(?string $path = null, string $message = ''): self
     {
-        if( blank($path) ) {
-            return $this->assertResponseContainsArray( [ 'openInNewTab' => true  ], 'redirect', $message);
+        if (blank($path)) {
+            return $this->assertResponseContainsArray(['openInNewTab' => true], 'redirect', $message);
         }
 
-        return $this->assertResponseContainsArray( [  'url' => $path, 'openInNewTab' => true  ], 'redirect', $message);
+        return $this->assertResponseContainsArray(['url' => $path, 'openInNewTab' => true], 'redirect', $message);
     }
 
     /**
@@ -169,7 +168,6 @@ class MockActionResponse
 
     private function assertResponseContainsArray(array $contents, string $type, string $message = ''): self
     {
-
         PHPUnit::assertThat(
             $this->response[$type]?->jsonSerialize() ?? throw new AssertionFailedError(),
             PHPUnit::logicalAnd(
