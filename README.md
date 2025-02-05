@@ -17,14 +17,25 @@ You can install the package in your Laravel Project via composer:
 composer require --dev quotevelocity/novaunit
 ```
 
-### Requirements
+### General Requirements
 
 * PHP 8.0 or higher
 * [Laravel](https://laravel.com/) 9.x - 11.x
 * [Laravel Nova](https://nova.laravel.com/) 4.x or higher
 * [PHPUnit](https://github.com/sebastianbergmann/phpunit) 9.x - 11.x
 
-Note: For older projects (Laravel < 9, Nova 2 or 3) please see the legacy project: [`joshgaber/novaunit`](https://github.com/joshgaber/NovaUnit) instead.
+
+### Nova 4
+
+As there were some breaking changes in Nova 4 to Nova 5, you should select the 4.x version of NovaUnit:
+
+```sh
+composer require --dev quotevelocity/novaunit:4.*
+``` 
+
+## Nova < 4
+
+For older projects (Laravel < 9, Nova 2 or 3) please see the legacy project: [`joshgaber/novaunit`](https://github.com/joshgaber/NovaUnit) instead.
 
 ## Usage
 
