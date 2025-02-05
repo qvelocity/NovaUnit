@@ -2,9 +2,7 @@ name: "novaunit"
 
 services:
  php:
-    build:
-        context: .docker
-        dockerfile: php.development.dockerfile
+    build: .docker
     restart: unless-stopped
     working_dir: /srv
     volumes:
@@ -12,9 +10,9 @@ services:
         - ~/.composer:/home/composer/.composer
         - ./vendor:/srv/vendor:delegated
         - ./storage/xdebug:/tmp/xdebug:delegated
-        - ./.docker/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     environment:
         XDEBUG_MODE: '${XDEBUG_MODE:-off}'
         XDEBUG_CONFIG: '${XDEBUG_CONFIG:-client_host=host.docker.internal}'
-
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
 
