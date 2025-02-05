@@ -128,16 +128,19 @@ class MockActionResponse
     /**
      * Asserts the handle response is of type "openInNewTab".
      *
-     * @param null|string $path
      * @param string $message
      * @return $this
      */
-    public function assertOpenInNewTab(?string $path = null, string $message = ''): self
+    public function assertOpenInNewTab(string $message = ''): self
     {
-        if (blank($path)) {
-            return $this->assertResponseContainsArray(['openInNewTab' => true], 'redirect', $message);
-        }
+        return $this->assertResponseContainsArray(['openInNewTab' => true], 'redirect', $message);
+    }
 
+    /**
+     * Asserts the handle response of type "openInNewTab" directs to the specified path.
+     */
+    public function assertOpenInNewTabToPath(string $path, string $message = ''): self
+    {
         return $this->assertResponseContainsArray(['url' => $path, 'openInNewTab' => true], 'redirect', $message);
     }
 
