@@ -7,6 +7,7 @@ use PHPUnit\Framework\Constraint\Constraint;
 
 class IsActionResponseType extends Constraint
 {
+    private $actionResponse;
     private $actionType;
 
     public function __construct($actionType, $actionResponse)
