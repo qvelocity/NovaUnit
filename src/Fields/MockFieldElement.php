@@ -3,6 +3,7 @@
 namespace JoshGaber\NovaUnit\Fields;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 class MockFieldElement
@@ -106,13 +107,15 @@ class MockFieldElement
      * Assert that the field can be shown on the index view.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertShownOnIndex(string $message = ''): self
+    public function assertShownOnIndex(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnIndex;
         PHPUnit::assertTrue(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -123,13 +126,15 @@ class MockFieldElement
      * Assert that the field is hidden from the index view.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertHiddenFromIndex(string $message = ''): self
+    public function assertHiddenFromIndex(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnIndex;
         PHPUnit::assertFalse(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -140,13 +145,15 @@ class MockFieldElement
      * Assert that the field can be shown on the detail view.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertShownOnDetail(string $message = ''): self
+    public function assertShownOnDetail(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnDetail;
         PHPUnit::assertTrue(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -157,13 +164,15 @@ class MockFieldElement
      * Assert that the field is hidden from the detail view.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertHiddenFromDetail(string $message = ''): self
+    public function assertHiddenFromDetail(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnDetail;
         PHPUnit::assertFalse(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -174,13 +183,15 @@ class MockFieldElement
      * Assert that the field can be shown when creating a new record.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertShownWhenCreating(string $message = ''): self
+    public function assertShownWhenCreating(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnCreation;
         PHPUnit::assertTrue(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -191,13 +202,15 @@ class MockFieldElement
      * Assert that the field is hidden when creating a new record.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertHiddenWhenCreating(string $message = ''): self
+    public function assertHiddenWhenCreating(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnCreation;
         PHPUnit::assertFalse(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -208,13 +221,15 @@ class MockFieldElement
      * Assert that the field can be shown when updating a record.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertShownWhenUpdating(string $message = ''): self
+    public function assertShownWhenUpdating(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnUpdate;
         PHPUnit::assertTrue(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
@@ -225,13 +240,15 @@ class MockFieldElement
      * Assert that the field is hidden when updating a record.
      *
      * @param  string  $message
+     * @param  NovaRequest|null $request
+     * @param  \Illuminate\Database\Eloquent\Model|\Laravel\Nova\Support\Fluent|object|array $resource
      * @return $this
      */
-    public function assertHiddenWhenUpdating(string $message = ''): self
+    public function assertHiddenWhenUpdating(string $message = '', ?NovaRequest $request = null, mixed $resource = []): self
     {
         $test = $this->field->showOnUpdate;
         PHPUnit::assertFalse(
-            is_callable($test) ? $test() : $test,
+            is_callable($test) ? $test($request ?? NovaRequest::createFromGlobals(), $resource) : $test,
             $message
         );
 
