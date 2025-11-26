@@ -2,7 +2,6 @@
 
 namespace JoshGaber\NovaUnit\Actions;
 
-use Composer\InstalledVersions;
 use Illuminate\Testing\Constraints\ArraySubset;
 use JoshGaber\NovaUnit\Constraints\IsActionResponseType;
 use Laravel\Nova\Actions\ActionResponse;
@@ -10,8 +9,6 @@ use Laravel\Nova\Actions\Responses\Visit;
 use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
-use PHPUnit\Framework\Constraint\IsType;
-use PHPUnit\Framework\NativeType;
 
 class MockActionResponse
 {
@@ -31,17 +28,10 @@ class MockActionResponse
      */
     public function assertResponseType(string $type, string $message = ''): self
     {
-        $phpunitVersion = InstalledVersions::getVersion('phpunit/phpunit');
-        $constraint = version_compare($phpunitVersion, '12.0.0', '<')
-            ? new IsType(IsType::TYPE_ARRAY)
-            : new IsType(NativeType::Array);
-
         PHPUnit::assertThat(
             $this->response,
             PHPUnit::logicalAnd(
-                is_array($this->response)
-                    ? $constraint
-                    : new IsInstanceOf(ActionResponse::class),
+                new IsInstanceOf(ActionResponse::class),
                 new IsActionResponseType($type, $this->response)
             ),
             $message
