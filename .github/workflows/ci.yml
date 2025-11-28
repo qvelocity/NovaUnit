@@ -2,7 +2,7 @@ name: Linting and Tests
 
 on:
     pull_request:
-        branches: [main, release/*]
+        branches: [main, release/*, enhancements]
         paths-ignore:
             - "**/*.md"
             - "*.md"
