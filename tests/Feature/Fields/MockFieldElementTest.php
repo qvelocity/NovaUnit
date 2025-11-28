@@ -7,7 +7,6 @@ use JoshGaber\NovaUnit\Tests\Fixtures\MockModel;
 use JoshGaber\NovaUnit\Tests\Fixtures\Resources\ResourceForFieldTests;
 use JoshGaber\NovaUnit\Tests\TestCase;
 use Laravel\Nova\Http\Requests\LensRequest;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class MockFieldElementTest extends TestCase
 {
