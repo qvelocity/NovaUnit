@@ -20,9 +20,9 @@ composer require --dev quotevelocity/novaunit
 ### General Requirements
 
 * PHP 8.2 or higher
-* [Laravel](https://laravel.com/) 11.x - 13.x
+* [Laravel](https://laravel.com/) 11.x - 12.x
 * [Laravel Nova](https://nova.laravel.com/) 5.x
-* [PHPUnit](https://github.com/sebastianbergmann/phpunit) 9.x - 12.x
+* [PHPUnit](https://github.com/sebastianbergmann/phpunit) 9.x - 11.x
 
 
 ### Nova 4
