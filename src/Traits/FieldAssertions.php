@@ -2,8 +2,8 @@
 
 namespace JoshGaber\NovaUnit\Traits;
 
-use JoshGaber\NovaUnit\Constraints\HasField;
 use Illuminate\Support\Arr;
+use JoshGaber\NovaUnit\Constraints\HasField;
 use JoshGaber\NovaUnit\Constraints\HasValidFields;
 use JoshGaber\NovaUnit\Fields\FieldHelper;
 use JoshGaber\NovaUnit\Fields\FieldNotFoundException;
