@@ -9,7 +9,6 @@ use Laravel\Nova\Actions\Responses\Visit;
 use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
-use PHPUnit\Framework\Constraint\IsType;
 
 class MockActionResponse
 {
@@ -32,9 +31,7 @@ class MockActionResponse
         PHPUnit::assertThat(
             $this->response,
             PHPUnit::logicalAnd(
-                is_array($this->response)
-                    ? new IsType('array')
-                    : new IsInstanceOf(ActionResponse::class),
+                new IsInstanceOf(ActionResponse::class),
                 new IsActionResponseType($type, $this->response)
             ),
             $message

@@ -28,6 +28,32 @@ class ResourceForFieldTests extends Resource
             Text::make('Epsilon', 'field_epsilon')
                 ->creationRules('min:8')
                 ->updateRules('min:16'),
+            Text::make('Zeta', 'field_zeta')
+                ->showOnIndex(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->showOnDetail(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->showOnCreating(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->showOnUpdating(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                }),
+            Text::make('Eta', 'field_eta')
+                ->hideFromIndex(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->hideFromDetail(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->hideWhenCreating(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                })
+                ->hideWhenUpdating(function (NovaRequest $request): bool {
+                    return $request->isLensRequest();
+                }),
         ];
     }
 

@@ -31,7 +31,7 @@ class MockAction extends MockComponent
         );
     }
 
-    public function getFields(NovaRequest $request = null): array
+    public function getFields(?NovaRequest $request = null): array
     {
         return $this->component->fields($request ?? NovaRequest::createFromGlobals());
     }

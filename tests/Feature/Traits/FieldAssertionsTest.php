@@ -117,6 +117,35 @@ class FieldAssertionsTest extends TestCase
 
     // endregion
 
+    // region assertHasFields
+    public function testItSucceedsWhenSearchingForFieldsByName()
+    {
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertHasFields(['alpha', 'beta']);
+    }
+
+    public function testItSucceedsWhenSearchingForFieldsByAttribute()
+    {
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertHasFields(['field_alpha', 'field_beta']);
+    }
+
+    public function testItFailsWhenSearchingForFieldsByAttributeCaseSensitive()
+    {
+        $this->shouldFail();
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertHasFields(['Field_Alpha', 'Field_Beta']);
+    }
+
+    public function testItFailsWhenNoFieldsHasEitherNameOrAttributeGiven()
+    {
+        $this->shouldFail();
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertHasFields(['gamma']);
+    }
+
+    // endregion
+
     // region assertFieldMissing
     public function testItSucceedsWhenNoFieldMatchesByNameOrAttribute()
     {
@@ -142,6 +171,35 @@ class FieldAssertionsTest extends TestCase
         $this->shouldFail();
         $mock = new MockAction(new ActionValidFields());
         $mock->assertFieldMissing('alpha');
+    }
+
+    // endregion
+
+    // region assertFieldsMissing
+    public function testItSucceedsWhenNoFieldsMatchesByNameOrAttribute()
+    {
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertFieldsMissing(['gamma']);
+    }
+
+    public function testItSucceedsWhenFieldsDoesNotMatchAttributeExactCase()
+    {
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertFieldsMissing(['Field_Alpha', 'Field_Beta']);
+    }
+
+    public function testItFailsWhenFieldsMatchesAttribute()
+    {
+        $this->shouldFail();
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertFieldsMissing(['field_alpha', 'field_beta']);
+    }
+
+    public function testItFailsWhenFieldsMatchesName()
+    {
+        $this->shouldFail();
+        $mock = new MockAction(new ActionValidFields());
+        $mock->assertFieldsMissing(['alpha']);
     }
 
     // endregion

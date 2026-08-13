@@ -6,6 +6,7 @@ use JoshGaber\NovaUnit\Resources\MockResource;
 use JoshGaber\NovaUnit\Tests\Fixtures\MockModel;
 use JoshGaber\NovaUnit\Tests\Fixtures\Resources\ResourceForFieldTests;
 use JoshGaber\NovaUnit\Tests\TestCase;
+use Laravel\Nova\Http\Requests\LensRequest;
 
 class MockFieldElementTest extends TestCase
 {
@@ -247,6 +248,110 @@ class MockFieldElementTest extends TestCase
     public function testItFailsIfFieldIsNotNotSortable()
     {
         $this->shouldFail()->mock->field('Delta')->assertNotSortable();
+    }
+
+    // endregion
+
+    // region assertShownOnIndex
+    public function testItSucceedsIfFieldIsShownOnIndexWithCallable()
+    {
+        $this->mock->field('Zeta')->assertShownOnIndex(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotShownOnIndexWithCallable()
+    {
+        $this->shouldFail()->mock->field('Zeta')->assertShownOnIndex();
+    }
+
+    // endregion
+
+    // region assertHiddenFromIndex
+    public function testItSucceedsIfFieldIsHiddenFromIndexWithCallable()
+    {
+        $this->mock->field('Eta')->assertHiddenFromIndex(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotHiddenFromIndexWithCallable()
+    {
+        $this->shouldFail()->mock->field('Eta')->assertHiddenFromIndex();
+    }
+
+    // endregion
+
+    // region assertShownOnDetail
+    public function testItSucceedsIfFieldIsShownOnDetailWithCallable()
+    {
+        $this->mock->field('Zeta')->assertShownOnDetail(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotShownOnDetailWithCallable()
+    {
+        $this->shouldFail()->mock->field('Zeta')->assertShownOnDetail();
+    }
+
+    // endregion
+
+    // region assertHiddenFromDetail
+    public function testItSucceedsIfFieldIsHiddenFromDetailWithCallable()
+    {
+        $this->mock->field('Eta')->assertHiddenFromDetail(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotHiddenFromDetailWithCallable()
+    {
+        $this->shouldFail()->mock->field('Eta')->assertHiddenFromDetail();
+    }
+
+    // endregion
+
+    // region assertShownWhenCreating
+    public function testItSucceedsIfFieldIsShownWhenCreatingWithCallable()
+    {
+        $this->mock->field('Zeta')->assertShownWhenCreating(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotShownWhenCreatingWithCallable()
+    {
+        $this->shouldFail()->mock->field('Zeta')->assertShownWhenCreating();
+    }
+
+    // endregion
+
+    // region assertHiddenWhenCreating
+    public function testItSucceedsIfFieldIsHiddenWhenCreatingWithCallable()
+    {
+        $this->mock->field('Eta')->assertHiddenWhenCreating(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotHiddenWhenCreatingWithCallable()
+    {
+        $this->shouldFail()->mock->field('Eta')->assertHiddenWhenCreating();
+    }
+
+    // endregion
+
+    // region assertShownWhenUpdating
+    public function testItSucceedsIfFieldIsShownWhenUpdatingWithCallable()
+    {
+        $this->mock->field('Zeta')->assertShownWhenUpdating(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotShownWhenUpdatingWithCallable()
+    {
+        $this->shouldFail()->mock->field('Zeta')->assertShownWhenUpdating();
+    }
+
+    // endregion
+
+    // region assertHiddenWhenUpdating
+    public function testItSucceedsIfFieldIsHiddenWhenUpdatingWithCallable()
+    {
+        $this->mock->field('Eta')->assertHiddenWhenUpdating(request: LensRequest::createFromGlobals());
+    }
+
+    public function testItFailsIfFieldIsNotHiddenWhenUpdatingWithCallable()
+    {
+        $this->shouldFail()->mock->field('Eta')->assertHiddenWhenUpdating();
     }
 
     // endregion
